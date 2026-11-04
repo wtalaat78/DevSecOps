@@ -1,0 +1,19 @@
+{
+  "name": "devsecops-maximum",
+  "version": "2.0.0",
+  "displayName": "DevSecOps Maximum",
+  "description": "Enterprise DevSecOps engineering, automated vulnerability scanning, threat modeling, and secure SDLC for Antigravity & Claude Code.",
+  "author": "DevSecOps Engineering",
+  "homepage": "https://github.com/devsecops-maximum",
+  "skills": [
+    "skill"
+  ],
+  "rules": [
+    "platform/antigravity/workspace-rule.md"
+  ],
+  "categories": [
+    "Security",
+    "DevOps",
+    "Quality"
+  ]
+}

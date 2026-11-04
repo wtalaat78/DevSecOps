@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\.claude\\skills\\devsecops-maximum\\scripts\\Emit-Claude-DevSecOpsContext.ps1\""
+          }
+        ]
+      }
+    ]
+  }
+}

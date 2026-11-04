@@ -1,0 +1,11 @@
+# Local security outputs may contain sensitive metadata; review before committing.
+security/reports/
+security/sbom/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.*

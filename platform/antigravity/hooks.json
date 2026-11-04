@@ -1,0 +1,29 @@
+{
+  "devsecops-safety-gate": {
+    "enabled": true,
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"./scripts/Protect-Execution.ps1\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "write_file|edit_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"./scripts/Audit-FileChange.ps1\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

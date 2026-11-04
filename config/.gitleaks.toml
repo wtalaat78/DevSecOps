@@ -1,0 +1,43 @@
+title = "DevSecOps Maximum Enterprise Gitleaks Configuration"
+
+[extend]
+useDefault = true
+
+# Enterprise Token Rules
+[[rules]]
+id = "generic-api-key"
+description = "Generic High-Entropy API Key or Secret"
+regex = '''(?i)(api_key|apikey|secret_key|app_secret|auth_token)\s*[:=]\s*['"][a-zA-Z0-9_\-]{20,80}['"]'''
+entropy = 3.5
+secretGroup = 0
+
+[[rules]]
+id = "slack-webhook-url"
+description = "Slack Incoming Webhook URL"
+regex = '''https://hooks\.slack\.com/services/T[a-zA-Z0-9_]+/B[a-zA-Z0-9_]+/[a-zA-Z0-9_]+'''
+secretGroup = 0
+
+[[rules]]
+id = "discord-webhook-url"
+description = "Discord Webhook URL"
+regex = '''https://(?:ptb\.|canary\.)?discord(?:app)?\.com/api/webhooks/\d+/[a-zA-Z0-9_\-]+'''
+secretGroup = 0
+
+[[rules]]
+id = "aws-session-token"
+description = "AWS Temporary Session Token"
+regex = '''(?i)(aws_session_token|security_token)\s*[:=]\s*['"][A-Za-z0-9/+=]{100,}['"]'''
+secretGroup = 0
+
+[allowlist]
+description = "Global DevSecOps baseline allowlist for test fixtures and false positives"
+paths = [
+    '''(^|/)(tests?|fixtures?|spec)/.*''',
+    '''(^|/)package-lock\.json$''',
+    '''(^|/)pnpm-lock\.yaml$''',
+    '''(^|/)yarn\.lock$'''
+]
+regexes = [
+    '''EXAMPLE[A-Z0-9_]+''',
+    '''dummy-[a-z0-9\-]+'''
+]
